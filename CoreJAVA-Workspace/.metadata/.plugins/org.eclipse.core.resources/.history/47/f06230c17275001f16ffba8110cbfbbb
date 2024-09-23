@@ -1,0 +1,111 @@
+package com.evergent.corejava.controller;
+
+import com.evergent.corejava.service.PharmacyService;
+import com.evergent.corejava.projectbean.MedicineBean;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class PharmacyController 
+{
+    public static void main(String[] args) 
+    {
+        int medicineId = 0;
+        String medicineName = "";
+        double price = 0;
+        int quantity = 0;
+        int ch, ch1 = 1;
+        Scanner s = new Scanner(System.in);
+        PharmacyService pharmacyService = new PharmacyService();
+
+        System.out.println("------------------------WELCOME TO THE PHARMACY---------------------");
+
+        while (ch1 != 0) 
+        {
+            System.out.println("1. Add a New Medicine");
+            System.out.println("2. View Medicine Details");
+            System.out.println("3. Update Medicine");
+            System.out.println("4. Delete Medicine");
+            System.out.println("5. Print Transactions");
+            System.out.println("Enter your choice:");
+            
+            try 
+            {
+                ch = s.nextInt();
+                switch (ch) 
+                {
+                    case 1:
+                        System.out.println("Enter Medicine ID:");
+                        medicineId = s.nextInt();
+                        System.out.println("Enter Medicine Name:");
+                        medicineName = s.next();
+                        System.out.println("Enter Price:");
+                        price = s.nextDouble();
+                        System.out.println("Enter Quantity:");
+                        quantity = s.nextInt();
+                        int addCount = pharmacyService.addMedicine(medicineId, medicineName, price, quantity);
+                        System.out.println(addCount + " Medicine Added Successfully");
+                        break;
+
+                    case 2:
+                        System.out.println("Enter Medicine ID:");
+                        medicineId = s.nextInt();
+                        MedicineBean medicine = pharmacyService.getMedicine(medicineId);
+                        if (medicine != null)
+                        {
+                            System.out.println("Medicine Details:");
+                            System.out.println("ID: " + medicine.getMedicineId());
+                            System.out.println("Name: " + medicine.getMedicineName());
+                            System.out.println("Price: " + medicine.getPrice());
+                            System.out.println("Quantity: " + medicine.getQuantity());
+                        } 
+                        else 
+                        {
+                            System.out.println("Medicine not found.");
+                        }
+                        break;
+
+                    case 3:
+                        System.out.println("Enter Medicine ID:");
+                        medicineId = s.nextInt();
+                        System.out.println("Enter New Medicine Name:");
+                        medicineName = s.next();
+                        System.out.println("Enter New Price:");
+                        price = s.nextDouble();
+                        System.out.println("Enter New Quantity:");
+                        quantity = s.nextInt();
+                        int updateCount = pharmacyService.updateMedicine(medicineId, medicineName, price, quantity);
+                        System.out.println(updateCount + " Medicine Updated Successfully");
+                        break;
+
+                    case 4:
+                        System.out.println("Enter Medicine ID:");
+                        medicineId = s.nextInt();
+                        int deleteCount = pharmacyService.deleteMedicine(medicineId);
+                        System.out.println(deleteCount + " Medicine Deleted Successfully");
+                        break;
+
+                    case 5:
+                        System.out.println("Enter Medicine ID:");
+                        medicineId = s.nextInt();
+                        String transactions = pharmacyService.getTransaction(medicineId);
+                        System.out.println("---------------YOUR TRANSACTIONS---------------\n");
+                        System.out.println(transactions);
+                        break;
+
+                    default:
+                        System.out.println("Enter a Valid Choice");
+                        break;
+                }
+            }
+            catch (InputMismatchException e)
+            {
+                System.out.println("Invalid input. Please enter the correct type.");
+                s.next();
+            }
+
+            System.out.println("\nEnter 1 to perform More Operations and 0 for Exit:");
+            ch1 = s.nextInt();
+        }
+        s.close();
+    }
+}

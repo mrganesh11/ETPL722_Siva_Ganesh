@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Siva.Kuruva\Downloads\BANK-Shadow-Core-Java-Project-20240909T124608Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\Book-JSP-MVC-DB-20240909T124612Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\MVC-Servlets-JSP-JavaBean1-20240909T124620Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\JDBC-PostGre-Development-RAM-20240906T043252Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\CoreJAVA-Book-LayersApplication-JDBC-2-20240906T043228Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\JAVA8-Development-RAM-20240906T042009Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\JDBC-Development-RAM-MySQL-20240903T132334Z-001"/>
+			<item value="C:\Users\Siva.Kuruva\Downloads\CoreJAVA-Book-LayersApplication-Collection-1-20240830T134212Z-001"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="BasicNewProjectResourceWizard">
+	</section>
+</section>

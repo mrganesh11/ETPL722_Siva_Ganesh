@@ -1,0 +1,23 @@
+String1: WOString {
+	value = "Employee Name";
+}
+
+String2: WOString {
+	value = "Employee Address";
+}
+
+SubmitButton1: WOSubmitButton {
+	action = submitAction;
+	name = save;
+	value = "save";
+}
+
+TextField1: WOTextField {
+	name = "name";
+	value = name;
+}
+
+TextField3: WOTextField {
+	name = "add";
+	value = add;
+}

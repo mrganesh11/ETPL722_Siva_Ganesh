@@ -1,0 +1,51 @@
+package com.evergent.corejava.service;
+
+import com.evergent.corejava.dao.MedicineDAO;
+import com.evergent.corejava.projectbean.MedicineBean;
+
+public class PharmacyService {
+    private final MedicineDAO medicineDAO = new MedicineDAO();
+
+    public int addMedicine(int medicineId, String medicineName, double price, int quantity) {
+        MedicineBean medicineBean = new MedicineBean();
+        medicineBean.setMedicineId(medicineId);
+        medicineBean.setMedicineName(medicineName);
+        medicineBean.setPrice(price);
+        medicineBean.setQuantity(quantity);
+        int result = medicineDAO.addMedicine(medicineBean);
+        if (result != 0) {
+            medicineDAO.addTransaction(medicineId, "Medicine Added");
+        }
+        return result;
+    }
+
+    public MedicineBean getMedicine(int medicineId) {
+        return medicineDAO.getMedicine(medicineId);
+    }
+
+    public int updateMedicine(int medicineId, String medicineName, double price, int quantity) {
+        MedicineBean medicineBean = new MedicineBean();
+        medicineBean.setMedicineId(medicineId);
+        medicineBean.setMedicineName(medicineName);
+        medicineBean.setPrice(price);
+        medicineBean.setQuantity(quantity);
+        int result = medicineDAO.updateMedicine(medicineBean);
+        if (result != 0) {
+            medicineDAO.addTransaction(medicineId, "Medicine Updated");
+        }
+        return result;
+    }
+
+    public int deleteMedicine(int medicineId) {
+        medicineDAO.deleteTransaction(medicineId);
+        int result = medicineDAO.deleteMedicine(medicineId);
+        if (result != 0) {
+            medicineDAO.addTransaction(medicineId, "Medicine Deleted");
+        }
+        return result;
+    }
+
+    public String getTransaction(int medicineId) {
+        return medicineDAO.getTransaction(medicineId);
+    }
+}

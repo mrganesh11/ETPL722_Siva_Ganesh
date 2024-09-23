@@ -1,0 +1,20 @@
+
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOComponent;
+
+public class EmpDetailsPage extends WOComponent {
+	EmployeeBean empObj=new EmployeeBean();
+	public String itr;
+	public String skillitr;
+	
+    public EmpDetailsPage(WOContext context) {
+        super(context);
+    }
+    public WOComponent back()
+	{
+		System.out.println("Back successfully");
+		 
+		
+		return null;
+	}
+}

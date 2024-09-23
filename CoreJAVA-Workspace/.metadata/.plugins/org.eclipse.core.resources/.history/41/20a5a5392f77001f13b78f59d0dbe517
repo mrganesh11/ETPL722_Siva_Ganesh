@@ -1,0 +1,9 @@
+
+import com.webobjects.appserver.WOContext;
+import com.webobjects.appserver.WOComponent;
+
+public class EmpDetailsPage extends WOComponent {
+    public EmpDetailsPage(WOContext context) {
+        super(context);
+    }
+}

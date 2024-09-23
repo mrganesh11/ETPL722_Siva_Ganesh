@@ -1,0 +1,108 @@
+package com.evergent.corejava.dao;
+
+import com.evergent.corejava.projectbean.MedicineBean;
+import java.sql.*;
+
+public class MedicineDAO {
+    private static final String ADD_MEDICINE_SQL = "INSERT INTO medicine (medicineId, medicineName, price, quantity) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE_MEDICINE_SQL = "UPDATE medicine SET medicineName = ?, price = ?, quantity = ? WHERE medicineId = ?";
+    private static final String DELETE_MEDICINE_SQL = "DELETE FROM medicine WHERE medicineId = ?";
+    private static final String GET_MEDICINE_SQL = "SELECT * FROM medicine WHERE medicineId = ?";
+    private static final String ADD_TRANSACTION_SQL = "INSERT INTO transactions (medicineId, transactionDetail) VALUES (?, ?)";
+    private static final String GET_TRANSACTION_SQL = "SELECT transactionDetail FROM transactions WHERE medicineId = ?";
+    private static final String DELETE_TRANSACTION_SQL = "DELETE FROM transactions WHERE medicineId = ?";
+
+    public int addMedicine(MedicineBean medicineBean) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(ADD_MEDICINE_SQL)) {
+            preparedStatement.setInt(1, medicineBean.getMedicineId());
+            preparedStatement.setString(2, medicineBean.getMedicineName());
+            preparedStatement.setDouble(3, medicineBean.getPrice());
+            preparedStatement.setInt(4, medicineBean.getQuantity());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public MedicineBean getMedicine(int medicineId) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_MEDICINE_SQL)) {
+            preparedStatement.setInt(1, medicineId);
+            ResultSet rs = preparedStatement.executeQuery();
+            if (rs.next()) {
+                MedicineBean medicineBean = new MedicineBean();
+                medicineBean.setMedicineId(rs.getInt("medicineId"));
+                medicineBean.setMedicineName(rs.getString("medicineName"));
+                medicineBean.setPrice(rs.getDouble("price"));
+                medicineBean.setQuantity(rs.getInt("quantity"));
+                return medicineBean;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int updateMedicine(MedicineBean medicineBean) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_MEDICINE_SQL)) {
+            preparedStatement.setString(1, medicineBean.getMedicineName());
+            preparedStatement.setDouble(2, medicineBean.getPrice());
+            preparedStatement.setInt(3, medicineBean.getQuantity());
+            preparedStatement.setInt(4, medicineBean.getMedicineId());
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int deleteMedicine(int medicineId) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_MEDICINE_SQL)) {
+            preparedStatement.setInt(1, medicineId);
+            return preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public void addTransaction(int medicineId, String detail) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(ADD_TRANSACTION_SQL)) {
+            preparedStatement.setInt(1, medicineId);
+            preparedStatement.setString(2, detail);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String getTransaction(int medicineId) {
+        StringBuilder transactions = new StringBuilder();
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(GET_TRANSACTION_SQL)) {
+            preparedStatement.setInt(1, medicineId);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                transactions.append(rs.getString("transactionDetail")).append("\n");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transactions.toString();
+    }
+
+    public void deleteTransaction(int medicineId) {
+        try (Connection connection = PharmacyDBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TRANSACTION_SQL)) {
+            preparedStatement.setInt(1, medicineId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

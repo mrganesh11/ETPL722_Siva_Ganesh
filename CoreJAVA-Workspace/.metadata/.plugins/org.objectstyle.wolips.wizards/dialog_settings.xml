@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="WOComponentCreationWizardSection.superclass" value="com.webobjects.appserver.WOComponent"/>
+	<item key="WOComponentCreationWizardSection.bodyCheckbox" value="false"/>
+	<item key="WOComponentCreationWizardSection.htmlDocType" value="XHTML 1.0 Transitional"/>
+	<item key="WOComponentCreationWizardSection.encoding" value="NSUTF8StringEncoding"/>
+	<item key="WOComponentCreationWizardSection.apiCheckbox" value="false"/>
+</section>

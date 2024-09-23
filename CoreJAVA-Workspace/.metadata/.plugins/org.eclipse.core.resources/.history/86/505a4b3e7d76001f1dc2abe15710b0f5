@@ -1,0 +1,76 @@
+import com.webobjects.foundation.NSMutableArray;
+
+public class EmployeeBean {
+	String myName;
+	String address;
+	String selectbg;
+	double Salary;
+	public String gender;
+
+	String itr;
+	protected NSMutableArray bglist;
+	protected NSMutableArray KL;
+	protected NSMutableArray err;
+	protected NSMutableArray skillList;
+	public String getMyName() {
+		return myName;
+	}
+	public void setMyName(String myName) {
+		this.myName = myName;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getSelectbg() {
+		return selectbg;
+	}
+	public void setSelectbg(String selectbg) {
+		this.selectbg = selectbg;
+	}
+	public double getSalary() {
+		return Salary;
+	}
+	public void setSalary(double salary) {
+		Salary = salary;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getItr() {
+		return itr;
+	}
+	public void setItr(String itr) {
+		this.itr = itr;
+	}
+	public NSMutableArray getBglist() {
+		return bglist;
+	}
+	public void setBglist(NSMutableArray bglist) {
+		this.bglist = bglist;
+	}
+	public NSMutableArray getKL() {
+		return KL;
+	}
+	public void setKL(NSMutableArray kL) {
+		KL = kL;
+	}
+	public NSMutableArray getErr() {
+		return err;
+	}
+	public void setErr(NSMutableArray err) {
+		this.err = err;
+	}
+	public NSMutableArray getSkillList() {
+		return skillList;
+	}
+	public void setSkillList(NSMutableArray skillList) {
+		this.skillList = skillList;
+	}
+	
+}

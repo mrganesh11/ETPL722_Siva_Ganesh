@@ -1,0 +1,74 @@
+Form1: WOForm {
+}
+
+Repetition1: WORepetition {
+	item = itr;
+	list = empObj.KL;
+}
+
+Repetition3: WORepetition {
+	item = skillitr;
+	list = empObj.skillListP;
+}
+
+String11: WOString {
+	value = "languages";
+}
+
+String12: WOString {
+	value = itr;
+}
+
+String14: WOString {
+	value = "Blood Group";
+}
+
+String15: WOString {
+	value = empObj.selectbg;
+}
+
+String17: WOString {
+	value = "Salary";
+}
+
+String18: WOString {
+	numberformat = "#,##0.00";
+	value = empObj.Salary;
+}
+
+String25: WOString {
+	value = "skills";
+}
+
+String26: WOString {
+	value = skillitr;
+}
+
+String3: WOString {
+	value = "Name";
+}
+
+String4: WOString {
+	value = "address";
+}
+
+String5: WOString {
+	value = empObj.myName;
+}
+
+String6: WOString {
+	value = empObj.address;
+}
+
+String8: WOString {
+	value = "Gender";
+}
+
+String9: WOString {
+	value = empObj.gender;
+}
+
+SubmitButton2: WOSubmitButton {
+	action = addAction;
+	value = "Add";
+}
